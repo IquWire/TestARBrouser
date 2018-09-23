@@ -343,6 +343,7 @@
     <Compile Include="Assets\Scripts\Loader\DataLoader.cs" />
     <Compile Include="Assets\Scripts\Loader\IFileLoader.cs" />
     <Compile Include="Assets\Scripts\TimeUpdate\TimeUpdateController.cs" />
+    <Compile Include="Assets\Scripts\Utility\RefreshImageController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Plugins\UniRx\ReadMe.txt" />

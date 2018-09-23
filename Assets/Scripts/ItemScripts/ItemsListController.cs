@@ -15,6 +15,8 @@ public class ItemsListController : MonoBehaviour
     [Inject]
     private UiItemsManager UiItemsManager;
 
+    [SerializeField] private RefreshImageController _refreshImage;
+
     public Text FeedText;
 
     public float TimeToUpdate;
@@ -22,8 +24,6 @@ public class ItemsListController : MonoBehaviour
 
     public void Awake()
     {
-        //CreateElements();
-
         this.UpdateAsObservable().Timestamp()
             .Where(x => x.Timestamp > _timeOffset.AddSeconds(TimeToUpdate))
             .Subscribe(x =>
@@ -43,17 +43,22 @@ public class ItemsListController : MonoBehaviour
         StartCoroutine(DataLoader.GetListCoroutine(CreateItemList));
     }
 
-    public void CreateItemList()
+    private void CreateItemList()
     {
         UiItemsManager.FillList(DataLoader.GetList());
         FillFeedText();
     }
 
-    public void RefreshElements()
+    private void RefreshElements()
     {
-        Debug.Log("Refresh list");
+        RefreshFeedback();
         DataLoader.ClearList();
         
         CreateElements();
+    }
+
+    private void RefreshFeedback()
+    {
+        _refreshImage.PlayRefreshAnim();
     }
 }

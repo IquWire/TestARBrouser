@@ -5,8 +5,11 @@ using Zenject;
 
 public class ItemPrefabInstaller : MonoInstaller
 {
+    [SerializeField]
+    private ItemUI ItemUiPrefab;
+
     public override void InstallBindings()
     {
-        Container.Bind<ItemUI>().AsTransient();
+        Container.BindInstance(ItemUiPrefab).AsTransient();
     }
 }

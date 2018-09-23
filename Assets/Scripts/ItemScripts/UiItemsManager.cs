@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 public class UiItemsManager : MonoBehaviour
 {
-    public RectTransform Content;
+    [SerializeField]
+    private RectTransform Content;
     
-    public ItemUI ItemPrefab;
+    [Inject]
+    private ItemUI ItemPrefab;
     
     private List<ItemUI> ItemsList;
 
